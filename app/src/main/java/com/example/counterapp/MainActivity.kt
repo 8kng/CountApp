@@ -9,16 +9,18 @@ import com.example.counterapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     var count = 0
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val text = findViewById<TextView>(R.id.countTxt)
-        val btn = findViewById<Button>(R.id.countBtn)
-        btn.setOnClickListener {
+        val ctext = binding.countTxt
+        val cbtn = binding.countBtn
+        cbtn.setOnClickListener {
             count += 1
-            text.text = count.toString()
+            ctext.text = count.toString()
         }
     }
 }
